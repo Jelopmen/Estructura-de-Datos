@@ -7,8 +7,8 @@ package proyectofinal;
  */
 public class ListaCircular {
     //Definicion de variables, nodos de control de la lista
-    private Nodo inicio;
-    private Nodo ultimo;
+    private Nodo1 inicio;
+    private Nodo1 ultimo;
     private int tamanio;
     private String user;
     private String password;
@@ -29,7 +29,7 @@ public class ListaCircular {
     
     //Metodo para insertar en el final de la lista
     public void agregarAlFinal(int valor){
-        Nodo nuevo = new Nodo();
+        Nodo1 nuevo = new Nodo1();
         nuevo.setValor(valor);
         if (esVacia()) {
             inicio = nuevo;
@@ -45,7 +45,7 @@ public class ListaCircular {
     
     //Metodo para insertar en el inicio de la lista
     public void agregarAlInicio(int valor){
-        Nodo nuevo = new Nodo();
+        Nodo1 nuevo = new Nodo1();
         nuevo.setValor(valor);
         if (esVacia()) {
             inicio = nuevo;
@@ -61,14 +61,14 @@ public class ListaCircular {
     
     //Metodo que recibe un valor el cual debera de buscar
     public void insertarPorReferencia(int referencia, int valor){
-        Nodo nuevo = new Nodo();
+        Nodo1 nuevo = new Nodo1();
         nuevo.setValor(valor);
         //Verifica que no este vacia
         if (!esVacia()) {
             
             //Busca atraves de la refencia el dato, sino pasa al siguiente nodo
             if (buscar(referencia)) {
-                Nodo aux = inicio;
+                Nodo1 aux = inicio;
                 //Atraves del valor lo inserta por medio de la referencia
                 while (aux.getValor() != referencia) {
                     aux = aux.getSiguiente();
@@ -78,7 +78,7 @@ public class ListaCircular {
                     nuevo.setSiguiente(inicio);
                     ultimo = nuevo;
                 } else {
-                    Nodo siguiente = aux.getSiguiente();
+                    Nodo1 siguiente = aux.getSiguiente();
                     aux.setSiguiente(nuevo);
                     nuevo.setSiguiente(siguiente);
                 }
@@ -90,7 +90,7 @@ public class ListaCircular {
     public void insrtarPorPosicion(int posicion, int valor){
         //Valida que la posicion exista
         if(posicion>=0 && posicion<=tamanio){
-            Nodo nuevo = new Nodo();
+            Nodo1 nuevo = new Nodo1();
             nuevo.setValor(valor);
             if(posicion == 0){
                 nuevo.setSiguiente(inicio);
@@ -106,11 +106,11 @@ public class ListaCircular {
                 }
                 else{
                     //Recorre la lista en busca de la posicion
-                    Nodo aux = inicio;
+                    Nodo1 aux = inicio;
                     for (int i = 0; i < (posicion-1); i++) {
                         aux = aux.getSiguiente();
                     }
-                    Nodo siguiente = aux.getSiguiente();
+                    Nodo1 siguiente = aux.getSiguiente();
                     aux.setSiguiente(nuevo);
                     nuevo.setSiguiente(siguiente);
                 }
@@ -127,7 +127,7 @@ public class ListaCircular {
                 return inicio.getValor();
             }else{
                 //Recorre la lista en busqueda de la posicion para obtener el valor
-                Nodo aux = inicio;
+                Nodo1 aux = inicio;
                 for (int i = 0; i < posicion; i++) {
                     aux = aux.getSiguiente();
                 }
@@ -139,7 +139,7 @@ public class ListaCircular {
     }
     //Busca por medio de una refencia por lo que lo realiza por medio de una boolean.
     public boolean buscar(int referencia){
-        Nodo aux = inicio;
+        Nodo1 aux = inicio;
         boolean encontrado = false;
         //No se detiene de buscar hasta que sea verdadero
         do{
@@ -156,7 +156,7 @@ public class ListaCircular {
     public int getPosicion(int referencia) throws Exception{
         //Lo busca atraves de una refencia y por medio de un contador indica la posicion del valor
         if (buscar(referencia)) {
-            Nodo aux = inicio;
+            Nodo1 aux = inicio;
             int cont = 0;
             while(referencia != aux.getValor()){
                 cont ++;
@@ -173,7 +173,7 @@ public class ListaCircular {
     public void editarPorReferencia(int referencia, int valor){
         //Busca el valor que se desea modificar
         if (buscar(referencia)) {
-            Nodo aux = inicio;
+            Nodo1 aux = inicio;
             while(aux.getValor() != referencia){
                 aux = aux.getSiguiente();
             }
@@ -190,7 +190,7 @@ public class ListaCircular {
                 inicio.setValor(valor);
             }
             else{
-                Nodo aux = inicio;
+                Nodo1 aux = inicio;
                 //Busca en toda la lista la posicion para insertar el valor
                 for (int i = 0; i < posicion; i++) {
                     aux = aux.getSiguiente();
@@ -207,7 +207,7 @@ public class ListaCircular {
                 inicio = inicio.getSiguiente();
                 ultimo.setSiguiente(inicio); 
             } else{
-                Nodo aux = inicio;
+                Nodo1 aux = inicio;
                 //Recorre la lista en busca de la referencia
                 while(aux.getSiguiente().getValor() != referencia){
                     aux = aux.getSiguiente();
@@ -216,7 +216,7 @@ public class ListaCircular {
                     aux.setSiguiente(inicio);
                     ultimo = aux;
                 } else {
-                    Nodo siguiente = aux.getSiguiente();
+                    Nodo1 siguiente = aux.getSiguiente();
                     aux.setSiguiente(siguiente.getSiguiente());  
                 }
             }
@@ -233,7 +233,7 @@ public class ListaCircular {
             }
             else{
                 //Busca la posicion indicada para removerla de la lista
-                Nodo aux = inicio;
+                Nodo1 aux = inicio;
                 for (int i = 0; i < posicion-1; i++) {
                     aux = aux.getSiguiente();
                 }
@@ -241,7 +241,7 @@ public class ListaCircular {
                     aux.setSiguiente(inicio);
                     ultimo = aux;
                 } else {
-                    Nodo siguiente = aux.getSiguiente();
+                    Nodo1 siguiente = aux.getSiguiente();
                     aux.setSiguiente(siguiente.getSiguiente());  
                 }
             }
@@ -257,7 +257,7 @@ public class ListaCircular {
     //Muestra tos los valores de la lista
     public void listar(){
         if (!esVacia()) {
-            Nodo aux = inicio;
+            Nodo1 aux = inicio;
             int i = 0;
             System.out.print("-> ");
             do{
@@ -268,19 +268,19 @@ public class ListaCircular {
         }
     }
 
-    public Nodo getInicio() {
+    public Nodo1 getInicio() {
         return inicio;
     }
 
-    public void setInicio(Nodo inicio) {
+    public void setInicio(Nodo1 inicio) {
         this.inicio = inicio;
     }
 
-    public Nodo getUltimo() {
+    public Nodo1 getUltimo() {
         return ultimo;
     }
 
-    public void setUltimo(Nodo ultimo) {
+    public void setUltimo(Nodo1 ultimo) {
         this.ultimo = ultimo;
     }
 
